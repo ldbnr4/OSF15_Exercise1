@@ -18,7 +18,15 @@ unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats,
 // TODO complete the defintion of this function. 
 void destroy_remaining_heap_allocations(Matrix_t **mats, unsigned int num_mats);
 
-	//TODO FUNCTION COMMENT
+/*
+ * main
+ *
+ * This function: Is the driver of the program
+ *
+ * @param int
+ * @param char**
+ * @return
+ */
 int main (int argc, char **argv) {
 	srand(time(NULL));		
 	char *line = NULL;
@@ -60,7 +68,16 @@ int main (int argc, char **argv) {
 	return 0;	
 }
 
-	//TODO FUNCTION COMMENT
+/*
+ * run_commands
+ *
+ * This function: Attempts to execute commands entered into the command line
+ *
+ * @param Commands_t*
+ * @param Matrix_t**
+ * @param unsigned int
+ * @return
+ */
 void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 	//TODO ERROR CHECK INCOMING PARAMETERS
 
@@ -195,7 +212,16 @@ void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 
 }
 
-	//TODO FUNCTION COMMENT
+/*
+ * find_matrix_given_name
+ *
+ * This function: Attempts to find the matrix with the given name
+ *
+ * @param Matrix_t**
+ * @param unsigned int
+ * @param const char*
+ * @return int
+ */
 unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats, const char* target) {
 	//TODO ERROR CHECK INCOMING PARAMETERS
 
@@ -207,7 +233,15 @@ unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats, con
 	return -1;
 }
 
-	//TODO FUNCTION COMMENT
+/*
+ * destroy_remaining_heap_allocations
+ *
+ * This function: Frees the remaining memory allocation for the heap
+ *
+ * @param Matrix_t**
+ * @param unsigned int
+ * @return
+ */
 void destroy_remaining_heap_allocations(Matrix_t **mats, unsigned int num_mats) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
