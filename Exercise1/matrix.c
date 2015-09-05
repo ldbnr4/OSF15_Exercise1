@@ -20,16 +20,16 @@ void load_matrix (Matrix_t* m, unsigned int* data);
 
 /* 
  * PURPOSE: instantiates a new matrix with the passed name, rows, cols 
- * INPUTS: 
- *	name the name of the matrix limited to 50 characters 
- *  rows the number of rows the matrix
- *  cols the number of cols the matrix
+ * INPUTS:
+ *  new_matrix the new matrix to be created
+ *	name - the name of the matrix limited to 50 characters 
+ *  rows - the number of rows the matrix
+ *  cols - the number of cols the matrix
  * RETURN:
  *  If no errors occurred during instantiation then true
  *  else false for an error in the process.
  *
- **/
-
+ */
 bool create_matrix (Matrix_t** new_matrix, const char* name, const unsigned int rows,
 						const unsigned int cols) {
 
@@ -54,8 +54,13 @@ bool create_matrix (Matrix_t** new_matrix, const char* name, const unsigned int 
 
 }
 
-	//TODO FUNCTION COMMENT
-
+/* 
+ * PURPOSE: frees the memory allocated for the matrix
+ * INPUT: 
+ *	m - the matrix to be destroyed
+ * RETURN:
+ *  
+ */
 void destroy_matrix (Matrix_t** m) {
 
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -67,7 +72,15 @@ void destroy_matrix (Matrix_t** m) {
 
 
 	
-	//TODO FUNCTION COMMENT
+/* 
+ * PURPOSE: checks the equality of two matricies
+ * INPUT: 
+ *	a - the first matrix to compare
+ *	d - the second matrix to compare
+ * RETURN:
+ *  True - if no errors and the matricies are equal
+ *  Fasle - otherwise
+ */
 bool equal_matrices (Matrix_t* a, Matrix_t* b) {
 
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -83,7 +96,15 @@ bool equal_matrices (Matrix_t* a, Matrix_t* b) {
 	return false;
 }
 
-	//TODO FUNCTION COMMENT
+/* 
+ * PURPOSE: makes a copy of the first matrix into the second
+ * INPUT: 
+ *	src - the matrix that is going to duplicated
+ *	dest - the matrix that will be a copy of the src
+ * RETURN:
+ *  True - if no errors and the src matrix is sucessfully copied into the dest matrix
+ *  Fasle - otherwise
+ */
 bool duplicate_matrix (Matrix_t* src, Matrix_t* dest) {
 
 
