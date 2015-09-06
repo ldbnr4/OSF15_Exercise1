@@ -79,7 +79,7 @@ void destroy_matrix (Matrix_t** m) {
  *	d - the second matrix to compare
  * RETURN:
  *  True - if no errors and the matricies are equal
- *  Fasle - otherwise
+ *  Fasle - if there are errors with matricies a or b
  */
 bool equal_matrices (Matrix_t* a, Matrix_t* b) {
 
@@ -103,7 +103,7 @@ bool equal_matrices (Matrix_t* a, Matrix_t* b) {
  *	dest - the matrix that will be a copy of the src
  * RETURN:
  *  True - if no errors and the src matrix is sucessfully copied into the dest matrix
- *  Fasle - otherwise
+ *  Fasle - if there are errors with the src matrix
  */
 bool duplicate_matrix (Matrix_t* src, Matrix_t* dest) {
 
@@ -121,7 +121,16 @@ bool duplicate_matrix (Matrix_t* src, Matrix_t* dest) {
 	return equal_matrices (src,dest);
 }
 
-	//TODO FUNCTION COMMENT
+/* 
+ * PURPOSE: bit shifts the numbers in the given matrix in the given direction by the given amount of times
+ * INPUT: 
+ *	a - the matrix that will have it's contents bit shifted
+ *	direction - the direction the number will be shifted either a left or a right
+ *  shift - the amount of times the number in the matrix will be bit shifted
+ * RETURN:
+ *  True - if the contents of the matrix is successfully bit shfited
+ *  Fasle - if there are errors with matrix a
+ */
 bool bitwise_shift_matrix (Matrix_t* a, char direction, unsigned int shift) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -152,7 +161,16 @@ bool bitwise_shift_matrix (Matrix_t* a, char direction, unsigned int shift) {
 	return true;
 }
 
-	//TODO FUNCTION COMMENT
+/* 
+ * PURPOSE: adds the contents of the two given matricies and stores them into a third matrix with the given name
+ * INPUT: 
+ *	a - the first matrix that will be added with the second matrix
+ *	b - the second matrix that will be added with the first matrix
+ *  c - the result matrix of a and b
+ * RETURN:
+ *  True - if the contents of the two matricies are successfully and stored into the third
+ *  Fasle - if there are errors with matrix a and b
+ */
 bool add_matrices (Matrix_t* a, Matrix_t* b, Matrix_t* c) {
 
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -169,7 +187,13 @@ bool add_matrices (Matrix_t* a, Matrix_t* b, Matrix_t* c) {
 	return true;
 }
 
-	//TODO FUNCTION COMMENT
+/* 
+ * PURPOSE: displays the contents of the given matrix
+ * INPUT: 
+ *	m - the matrix whoes content will be printed
+ * RETURN:
+ *
+ */
 void display_matrix (Matrix_t* m) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -187,7 +211,15 @@ void display_matrix (Matrix_t* m) {
 
 }
 
-	//TODO FUNCTION COMMENT
+/* 
+ * PURPOSE: reads in a file with the given name and creates a matrix from it
+ * INPUT: 
+ *	matrix_input_filename - the name of the file that has the content for the new matrix to be created
+ *	m - the new matrix
+ * RETURN:
+ *  True - if the new matrix has been created from the given file name
+ *  Fasle - if there are errors in the process
+ */
 bool read_matrix (const char* matrix_input_filename, Matrix_t** m) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -320,7 +352,15 @@ bool read_matrix (const char* matrix_input_filename, Matrix_t** m) {
 	return true;
 }
 
-	//TODO FUNCTION COMMENT
+/* 
+ * PURPOSE: writes the contents of the given matrix to a file
+ * INPUT: 
+ *	matrix_output_filename - the name of the file that will be created from the given matrix
+ *	m - the matrix to be written to the file
+ * RETURN:
+ *  True - if the matrix has been successfully written to a file
+ *  Fasle - if there are errors in the process
+ */
 bool write_matrix (const char* matrix_output_filename, Matrix_t* m) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -388,14 +428,23 @@ bool write_matrix (const char* matrix_output_filename, Matrix_t* m) {
 	return true;
 }
 
-	//TODO FUNCTION COMMENT
+/* 
+ * PURPOSE: randomizes the numbers in the given matrix
+ * INPUT: 
+ *	m - the matrix to have numbers randomized
+ *	start_range - the starting number 
+ *	end_range - the matrix to be written to the file
+ * RETURN:
+ *  True - if the matrix has been successfully written to a file
+ *  Fasle - if there are errors in the process
+ */
 bool random_matrix(Matrix_t* m, unsigned int start_range, unsigned int end_range) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
 
 	for (unsigned int i = 0; i < m->rows; ++i) {
 		for (unsigned int j = 0; j < m->cols; ++j) {
-			m->data[i * m->cols + j] = rand() % end_range + start_range;
+			m->data[i * m->cols + j] =  start_range + (rand() % (int)(end_range - start_range + 1));
 		}
 	}
 	return true;
