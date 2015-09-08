@@ -9,15 +9,15 @@
 #define MAX_CMD_LEN 25
 
 
-/*
- * parse_user_input
- *
- * This function: Parses the user's input into a list of commands
- *
- * @param const char*
- * @param Commands_t**
- * @return boolean
- */
+ 	/* 
+	 * PURPOSE: parses the user's input into a list of commands
+	 * INPUT: 
+	 *	input - the user's inputs
+	 *	cmd - the list to be created from the user's entries
+	 * RETURN:
+	 *  True - if the list of commands are created successfully
+	 *  Fasle - if there are errors with allocation
+	 */
 bool parse_user_input (const char* input, Commands_t** cmd) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -44,14 +44,13 @@ bool parse_user_input (const char* input, Commands_t** cmd) {
 	return true;
 }
 
-/*
- * destroy_commands
- *
- * This function: Frees the memory allocated for the commands
- *
- * @param Commands_t**
- * @return
- */
+ 	/* 
+	 * PURPOSE: frees the memory allocated for the commands
+	 * INPUTS:
+	 * cmd - list of commands
+	 * RETURN:
+	 *
+	 */
 void destroy_commands(Commands_t** cmd) {
 
 	//TODO ERROR CHECK INCOMING PARAMETERS

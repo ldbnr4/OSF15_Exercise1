@@ -18,15 +18,16 @@ unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats,
 // TODO complete the defintion of this function. 
 void destroy_remaining_heap_allocations(Matrix_t **mats, unsigned int num_mats);
 
-/*
- * main
- *
- * This function: Is the driver of the program
- *
- * @param int
- * @param char**
- * @return
- */
+   	/* 
+	 * PURPOSE: the driver of the program
+	 * INPUT: 
+	 *	argc - the user's input
+	 *	argv - the list of matrices
+	 * RETURN:
+	 *  0 - if the program exits successfully
+	 *  -1 - if the program fails to initialize
+	 * 
+	 */
 int main (int argc, char **argv) {
 	srand(time(NULL));		
 	char *line = NULL;
@@ -68,16 +69,15 @@ int main (int argc, char **argv) {
 	return 0;	
 }
 
-/*
- * run_commands
- *
- * This function: Attempts to execute commands entered into the command line
- *
- * @param Commands_t*
- * @param Matrix_t**
- * @param unsigned int
- * @return
- */
+  	/* 
+	 * PURPOSE: executes the command entered by the user
+	 * INPUT: 
+	 *	cmd - the user's input
+	 *	mats - the list of matrices
+	 *	num_mats - the number of matrices in the list
+	 * RETURN:
+	 * 
+	 */
 void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 	//TODO ERROR CHECK INCOMING PARAMETERS
 
@@ -212,16 +212,17 @@ void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 
 }
 
-/*
- * find_matrix_given_name
- *
- * This function: Attempts to find the matrix with the given name
- *
- * @param Matrix_t**
- * @param unsigned int
- * @param const char*
- * @return int
- */
+/
+   	/* 
+	 * PURPOSE: finds the index of the given matrix in the matrix list
+	 * INPUT: 
+	 *	mats - the list of matrices
+	 *	num_mats - the number of matrices in the list
+	 *  target - the name of the matrix that is being looked for
+	 * RETURN:
+	 *  i -  the index of the matrix found
+	 *  -1 - if the given matrix name is not found
+	 */
 unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats, const char* target) {
 	//TODO ERROR CHECK INCOMING PARAMETERS
 
@@ -233,15 +234,14 @@ unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats, con
 	return -1;
 }
 
-/*
- * destroy_remaining_heap_allocations
- *
- * This function: Frees the remaining memory allocation for the heap
- *
- * @param Matrix_t**
- * @param unsigned int
- * @return
- */
+   	/* 
+	 * PURPOSE: frees the memory allocated for the heap
+	 * INPUT: 
+	 *	mats - the list of matrices
+	 *	num_mats - the number of matrices in the list
+	 * RETURN:
+	 *  
+	 */
 void destroy_remaining_heap_allocations(Matrix_t **mats, unsigned int num_mats) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS

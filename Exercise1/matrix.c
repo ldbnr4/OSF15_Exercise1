@@ -21,7 +21,7 @@ void load_matrix (Matrix_t* m, unsigned int* data);
 	/* 
 	 * PURPOSE: instantiates a new matrix with the passed name, rows, cols 
 	 * INPUTS:
-	 *  new_matrix the new matrix to be created
+	 *  new_matrix - the new matrix to be created
 	 *	name - the name of the matrix limited to 50 characters 
 	 *  rows - the number of rows the matrix
 	 *  cols - the number of cols the matrix
@@ -69,8 +69,6 @@ void destroy_matrix (Matrix_t** m) {
 	free(*m);
 	*m = NULL;
 }
-
-
 	
 	/* 
 	 * PURPOSE: checks the equality of two matricies
@@ -102,7 +100,7 @@ bool equal_matrices (Matrix_t* a, Matrix_t* b) {
 	 *	src - the matrix that is going to duplicated
 	 *	dest - the matrix that will be a copy of the src
 	 * RETURN:
-	 *  True - if no errors and the src matrix is sucessfully copied into the dest matrix
+	 *  True - if no errors and the src matrix is successfully copied into the dest matrix
 	 *  Fasle - if there are errors with the src matrix
 	 */
 bool duplicate_matrix (Matrix_t* src, Matrix_t* dest) {
