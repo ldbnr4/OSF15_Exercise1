@@ -277,7 +277,7 @@ unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats, con
 }
 
    	/* 
-	 * PURPOSE: frees the memory allocated for the heap
+	 * PURPOSE: frees the allocated heap memory
 	 * INPUT: 
 	 *	mats - the list of matrices
 	 *	num_mats - the number of matrices in the list

@@ -19,7 +19,7 @@
 void load_matrix (Matrix_t* m, unsigned int* data);
 
 	/* 
-	 * PURPOSE: instantiates a new matrix with the passed name, rows, cols 
+	 * PURPOSE: instantiates a new matrix with the given name, rows, cols 
 	 * INPUTS:
 	 *  new_matrix - the new matrix to be created
 	 *	name - the name of the matrix limited to 50 characters 
@@ -104,16 +104,15 @@ bool equal_matrices (Matrix_t* a, Matrix_t* b) {
 	 *	dest - the matrix that will be a copy of the src
 	 * RETURN:
 	 *  True - if no errors and the src matrix is successfully copied into the dest matrix
-	 *  Fasle - if there are errors with the src matrix
+	 *  Fasle - if there are errors with the src or dest matrix
 	 */
 bool duplicate_matrix (Matrix_t* src, Matrix_t* dest) {
 
-
-	//TODO ERROR CHECK INCOMING PARAMETERS
-
-	if (!src) {
+	if( !src || !dest ){
 		return false;
 	}
+	//TODO ERROR CHECK INCOMING PARAMETERS
+
 	/*
 	 * copy over data
 	 */
@@ -174,7 +173,9 @@ bool bitwise_shift_matrix (Matrix_t* a, char direction, unsigned int shift) {
 	 */
 bool add_matrices (Matrix_t* a, Matrix_t* b, Matrix_t* c) {
 
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !a || !b ){
+		return false;
+	}//TODO ERROR CHECK INCOMING PARAMETERS
 
 	if (a->rows != b->rows && a->cols != b->cols) {
 		return false;
@@ -216,14 +217,16 @@ void display_matrix (Matrix_t* m) {
 	 * PURPOSE: reads in a file with the given name and creates a matrix from it
 	 * INPUT: 
 	 *	matrix_input_filename - the name of the file that has the content for the new matrix to be created
-	 *	m - the new matrix
+	 *	m - the matrix that will be loaded with the contents of the read file
 	 * RETURN:
 	 *  True - if the new matrix has been created from the given file name
 	 *  Fasle - if there are errors in the process
 	 */
 bool read_matrix (const char* matrix_input_filename, Matrix_t** m) {
 	
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !matrix_input_filename ){
+		return false;
+	}//TODO ERROR CHECK INCOMING PARAMETERS
 
 
 	int fd = open(matrix_input_filename,O_RDONLY);
@@ -364,7 +367,9 @@ bool read_matrix (const char* matrix_input_filename, Matrix_t** m) {
 	 */
 bool write_matrix (const char* matrix_output_filename, Matrix_t* m) {
 	
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !matrix_output_filename || !m){
+		return false;
+	}//TODO ERROR CHECK INCOMING PARAMETERS
 
 	int fd = open (matrix_output_filename, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	/* ERROR HANDLING USING errorno*/
@@ -441,7 +446,9 @@ bool write_matrix (const char* matrix_output_filename, Matrix_t* m) {
 	 */
 bool random_matrix(Matrix_t* m, unsigned int start_range, unsigned int end_range) {
 	
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !m || (start_range > end_range) ){
+		return false;
+	}//TODO ERROR CHECK INCOMING PARAMETERS
 
 	for (unsigned int i = 0; i < m->rows; ++i) {
 		for (unsigned int j = 0; j < m->cols; ++j) {
