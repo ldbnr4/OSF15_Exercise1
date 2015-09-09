@@ -263,7 +263,10 @@ void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 	 *  -1 - if the given matrix name is not found
 	 */
 unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats, const char* target) {
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !target || !(*mats) ){
+		printf("Null matrix name given or null list of matricies.\n");
+		return -1;
+	} //TODO ERROR CHECK INCOMING PARAMETERS
 
 	for (int i = 0; i < num_mats; ++i) {
 		if (strncmp(mats[i]->name,target,strlen(mats[i]->name)) == 0) {
@@ -283,7 +286,13 @@ unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats, con
 	 */
 void destroy_remaining_heap_allocations(Matrix_t **mats, unsigned int num_mats) {
 	
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !(*mats) ){
+		printf("Null list of matrices.\n");
+		return;
+	}//TODO ERROR CHECK INCOMING PARAMETERS
 
-	// COMPLETE MISSING MEMORY CLEARING HERE
+	for (int i = 0; i < num_mats; ++i) {
+		free((*mats)->data);
+		free(mats[i]);
+	}// COMPLETE MISSING MEMORY CLEARING HERE
 }
