@@ -292,7 +292,8 @@ void destroy_remaining_heap_allocations(Matrix_t **mats, unsigned int num_mats) 
 	}//TODO ERROR CHECK INCOMING PARAMETERS
 
 	for (int i = 0; i < num_mats; ++i) {
-		//free((mats[i])->data);
-		destroy_matrix(&mats[i]);
+		if( mats[i] ){
+			destroy_matrix(&mats[i]);
+		}
 	}// COMPLETE MISSING MEMORY CLEARING HERE
 }
