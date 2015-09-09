@@ -41,7 +41,7 @@ int main (int argc, char **argv) {
 		perror("PROGRAM FAILED TO CREATE TMP MATRIX\n");
 		return -1;
 	} // TODO ERROR CHECK
-	if(!(add_matrix_to_array(mats,temp, 10))){
+	if((add_matrix_to_array(mats,temp, 10)) == 99 ){
 		perror("PROGRAM FAILED TO ADD TMP MATRIX TO MATS ARRAY\n");
 		return -1;
 	} //TODO ERROR CHECK NEEDED
@@ -123,7 +123,7 @@ void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 					return;
 				}
 			
-				if ( !add_matrix_to_array(mats,c, num_mats) ){
+				if ( add_matrix_to_array(mats,c, num_mats) == 99 ){
 					printf("Failed to add the result Matrix to the mats array.\n");
 					return;
 				} //TODO ERROR CHECK NEEDED
@@ -148,7 +148,7 @@ void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 					printf("Failed to duplicate matrix.\n");
 					return;
 				}//TODO ERROR CHECK NEEDED
-				if( !add_matrix_to_array(mats,dup_mat,num_mats) ){
+				if( add_matrix_to_array(mats,dup_mat,num_mats) == 99 ){
 					printf("Failed to add matrix to matrix array.\n");
 					return;
 				} //TODO ERROR CHECK NEEDED
@@ -201,7 +201,7 @@ void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 			return;
 		}	
 		
-		if( !add_matrix_to_array(mats,new_matrix, num_mats) ){
+		if( add_matrix_to_array(mats,new_matrix, num_mats) == 99 ){
 			printf("Failed to add matrix to matrix array.\n");
 			return; //TODO ERROR CHECK NEEDED
 		}
@@ -228,7 +228,7 @@ void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 			printf("Failed to create matrix.\n");
 			return;
 		} //TODO ERROR CHECK NEEDED
-		if( !add_matrix_to_array(mats,new_mat,num_mats) ){
+		if( add_matrix_to_array(mats,new_mat,num_mats) == 99 ){
 			printf("Failed to add matrix to array.\n");
 			return;
 		} // TODO ERROR CHECK NEEDED
@@ -292,7 +292,7 @@ void destroy_remaining_heap_allocations(Matrix_t **mats, unsigned int num_mats) 
 	}//TODO ERROR CHECK INCOMING PARAMETERS
 
 	for (int i = 0; i < num_mats; ++i) {
-		free((*mats)->data);
-		free(mats[i]);
+		//free((mats[i])->data);
+		destroy_matrix(&mats[i]);
 	}// COMPLETE MISSING MEMORY CLEARING HERE
 }

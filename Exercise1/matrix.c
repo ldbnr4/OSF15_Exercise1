@@ -33,7 +33,10 @@ void load_matrix (Matrix_t* m, unsigned int* data);
 bool create_matrix (Matrix_t** new_matrix, const char* name, const unsigned int rows,
 						const unsigned int cols) {
 
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !name ){
+		printf("New matrix name is NULL.\n");
+		return false;
+	} //TODO ERROR CHECK INCOMING PARAMETERS
 
 	*new_matrix = calloc(1,sizeof(Matrix_t));
 	if (!(*new_matrix)) {
@@ -475,7 +478,11 @@ void load_matrix (Matrix_t* m, unsigned int* data) {
 	 */
 unsigned int add_matrix_to_array (Matrix_t** mats, Matrix_t* new_matrix, unsigned int num_mats) {
 	
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !new_matrix ){
+		printf("Null new matrix.\n");
+		return 99;
+	}//TODO ERROR CHECK INCOMING PARAMETERS
+	
 	static long int current_position = 0;
 	const long int pos = current_position % num_mats;
 	if ( mats[pos] ) {

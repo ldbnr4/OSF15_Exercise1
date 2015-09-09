@@ -20,7 +20,10 @@
 	 */
 bool parse_user_input (const char* input, Commands_t** cmd) {
 	
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !input ){
+		printf("Null input from the user.\n");
+		return false;
+	}//TODO ERROR CHECK INCOMING PARAMETERS
 
 	char *string = strdup(input);
 	
@@ -53,7 +56,10 @@ bool parse_user_input (const char* input, Commands_t** cmd) {
 	 */
 void destroy_commands(Commands_t** cmd) {
 
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !(*cmd) ){
+		printf("Null list of commands.\n");
+		return;
+	}//TODO ERROR CHECK INCOMING PARAMETERS
 	
 	for (int i = 0; i < (*cmd)->num_cmds; ++i) {
 		free((*cmd)->cmds[i]);
