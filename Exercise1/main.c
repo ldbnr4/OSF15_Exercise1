@@ -25,7 +25,7 @@ void destroy_remaining_heap_allocations(Matrix_t **mats, unsigned int num_mats);
 	 *	argv - the list of matrices
 	 * RETURN:
 	 *  0 - if the program exits successfully
-	 *  -1 - if the program fails to initialize
+	 *  -1 - if the program fails to initialize or other errors occur
 	 * 
 	 */
 int main (int argc, char **argv) {
@@ -160,7 +160,7 @@ void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 		}
 	}
 	else if (strncmp(cmd->cmds[0],"equal",strlen("equal") + 1) == 0
-		&& cmd->num_cmds == 2) {
+		&& cmd->num_cmds == 3) {
 			int mat1_idx = find_matrix_given_name(mats,num_mats,cmd->cmds[1]);
 			int mat2_idx = find_matrix_given_name(mats,num_mats,cmd->cmds[2]);
 			if (mat1_idx >= 0 && mat2_idx >= 0) {
@@ -260,12 +260,12 @@ void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 	 *  target - the name of the matrix that is being looked for
 	 * RETURN:
 	 *  i -  the index of the matrix found
-	 *  -1 - if the given matrix name is not found
+	 *  99 - if the given matrix name is not found
 	 */
 unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats, const char* target) {
 	if( !target || !(*mats) ){
 		printf("Null matrix name given or null list of matricies.\n");
-		return -1;
+		return 99;
 	} //TODO ERROR CHECK INCOMING PARAMETERS
 
 	for (int i = 0; i < num_mats; ++i) {
