@@ -470,7 +470,10 @@ bool random_matrix(Matrix_t* m, unsigned int start_range, unsigned int end_range
 	 */
 void load_matrix (Matrix_t* m, unsigned int* data) {
 	
-	//TODO ERROR CHECK INCOMING PARAMETERS
+	if( !m || !data ){
+		printf("Null pointer to matrix or data");
+		return;
+	}//TODO ERROR CHECK INCOMING PARAMETERS
 	memcpy(m->data,data,m->rows * m->cols * sizeof(unsigned int));
 }
 
@@ -486,7 +489,6 @@ void load_matrix (Matrix_t* m, unsigned int* data) {
 unsigned int add_matrix_to_array (Matrix_t** mats, Matrix_t* new_matrix, unsigned int num_mats) {
 	
 	if( !new_matrix ){
-		printf("Null new matrix.\n");
 		return 99;
 	}//TODO ERROR CHECK INCOMING PARAMETERS
 	
